@@ -1,6 +1,6 @@
 
-## Agent Based COVID-19 Transmission Model in Florida
-- Spatially explicit, stochastic and discrete-time
+### COVID-19 Transmission Model in Florida
+- Spatially explicit, stochastic and discrete-time agent-based model
 - Foundation: synthetic populations
   * Persons (Age, sex, comorbidities)
   * Locations (Workplace, schools, nursing homes, hospitals)
@@ -8,7 +8,7 @@
 - 8.9m households, 20m persons, 2.4m workplaces
 - Statistics and randomization
   * e.g. workplace sizes, 'gravity model' for connections
-@snap[south-east span-40]
+@snap[south-east span-33]
 ### FL Synthetic Population
 ![IMAGE](assets/img/hhwp.png)
 @snapend
