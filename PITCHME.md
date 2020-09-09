@@ -8,7 +8,10 @@
 - 8.9m households, 20m persons, 2.4m workplaces
 - Statistics and randomization
   * e.g. workplace sizes, 'gravity model' for connections
-
+@snap[south-east span-40]
+### FL Synthetic Population
+![IMAGE](assets/img/diagram.png)
+@snapend
 ---
 
 ## Inference of time varying parameters
