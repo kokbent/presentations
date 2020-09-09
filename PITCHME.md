@@ -10,7 +10,7 @@
   * e.g. workplace sizes, 'gravity model' for connections
 @snap[south-east span-40]
 ### FL Synthetic Population
-![IMAGE](assets/img/diagram.png)
+![IMAGE](assets/img/hhwp.png)
 @snapend
 ---
 
