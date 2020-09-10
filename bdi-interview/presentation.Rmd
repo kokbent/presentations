@@ -37,14 +37,14 @@ class: inverse, center, middle
 class: center, middle
 
 ```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("assets/img/hhwp.png")
+knitr::include_graphics("../assets/img/hhwp.png")
 ```
 
 ---
 class: center, middle
 
 ```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("assets/img/workdist.png")
+knitr::include_graphics("../assets/img/workdist.png")
 ```
 
 ---
@@ -54,7 +54,7 @@ knitr::include_graphics("assets/img/workdist.png")
 - Social distancing metric (Cellphone tracking data)
 
 ```{r echo=FALSE, out.width="90%", fig.align='center'}
-knitr::include_graphics("assets/img/counties-sdm.png")
+knitr::include_graphics("../assets/img/counties-sdm.png")
 ```
 
 ---
@@ -64,7 +64,7 @@ knitr::include_graphics("assets/img/counties-sdm.png")
 - Learn urban-rural dynamic
 
 ```{r echo=FALSE, out.width="70%", fig.align='center'}
-knitr::include_graphics("assets/img/Vaccine.png")
+knitr::include_graphics("../assets/img/Vaccine.png")
 ```
 
 ---
@@ -99,7 +99,7 @@ class: inverse, center, middle
 - Detailed breakdown of cost on health system and social perspective
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
-knitr::include_graphics("assets/img/1-s2.0-S0264410X19316548-gr6_lrg.jpg")
+knitr::include_graphics("../assets/img/1-s2.0-S0264410X19316548-gr6_lrg.jpg")
 ```
 
 - Wide range of vaccination consideration (e.g. continual screening, dosages)
