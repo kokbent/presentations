@@ -87,11 +87,18 @@ class: inverse, center, middle
 ---
 # Paper Critique
 
-- Deterministic compartmental model: Very comprehensive with a lot of compartments and states
-  - Accounting for cross protection, cross enhancement, waning of immunity and four stages of infections
+.pull-left[
+- Deterministic compartmental model: Complex and comprehensive
+  - Account for cross protection, cross enhancement, waning of immunity, stages of infections
+]
+
+.pull-right[
+```{r echo=FALSE}
+knitr::include_graphics("../assets/img/infection.png")
+```
+]
 
 - Unclear about performance of the model with respect to the past datasets
-  - Mentioned in 2016 paper discussing model parameterisation
   
 ---
 # Paper Critique
@@ -102,11 +109,9 @@ class: inverse, center, middle
 knitr::include_graphics("../assets/img/1-s2.0-S0264410X19316548-gr6_lrg.jpg")
 ```
 
-- Wide range of vaccination consideration (e.g. continual screening, dosages)
-
 - In light of Dengvaxia incident in the Philippines, hard to imagine vaccination without screening in anywhere even in area with very low transmission
 
-- Will be interesting to see what the model means on country-level operations, taking heterogeneity in transmission and costs into account.
+- Will be interesting to see how the the analyses translate into country-level operations, taking heterogeneity in transmission and costs into account.
 
 ---
 class: inverse, center, middle
