@@ -25,46 +25,60 @@ class: inverse, center, middle
 ---
 # COVID-19 Transmission Model in Florida
 
-- Spatially explicit, stochastic and discrete-time agent-based model
+- Spatially explicit agent-based model
+  - Assess impact of intervention strategies (e.g. selective lockdown / closure of businesses)
+  - Assess impact of vaccinations
 
---
+- Synthetic populations
 
-- Foundation: synthetic populations
-  - Persons (Age, sex, comorbidities)
-  - Locations (Workplace, schools, nursing homes, hospitals)
-  - Connections (reside, work, school, socialize via household network)
+- Inference of time-varying parameters
 
---
-
+---
+# Synthetic Populations of Florida
+.pull-left[
 - 8.9m households, 20m persons, 2.4m workplaces
+
+- Nursing homes, schools and hospitals
+
 - Statistics and randomization
-  - e.g. workplace sizes, 'gravity model' for connections
+  - e.g. workplace sizes
+  - e.g. 'gravity model' for connections
+]
 
+.pull-right[
+One household (lightgreen) and its connected locations
+
+&lt;img src="../assets/img/singlehh.PNG" width="744" /&gt;
+]
 ---
 class: center, middle
+.pull-left[
+&lt;img src="../assets/img/hhwp.png" width="3359" /&gt;
+]
 
-&lt;img src="../assets/img/hhwp.png" width="80%" /&gt;
-
----
-class: center, middle
-
-&lt;img src="../assets/img/workdist.png" width="80%" /&gt;
+.pull-right[
+&lt;img src="../assets/img/workdist.png" width="3359" /&gt;
+]
 
 ---
 # Inference of time varying parameters
+
 - State/county reported cases, hospitalization and death
 - Report delay of test results (State line list)
-- Social distancing metric (Cellphone tracking data)
+- Social distancing metric (Safegraph cellphone tracking data)
 
 &lt;img src="../assets/img/counties-sdm.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
-# Use of model
-- Assess impact of vaccination
-- Assess impact of other intervention strategies (e.g. lockdown, contact tracing)
-- Learn urban-rural dynamic
+# Impact?
 
-&lt;img src="../assets/img/Vaccine.png" width="70%" style="display: block; margin: auto;" /&gt;
+.pull-left[
+&lt;img src="../assets/img/Vaccine.png" width="2000" /&gt;
+]
+
+.pull-right[
+&lt;img src="../assets/img/Vaccine2.png" width="2000" /&gt;
+]
 
 ---
 class: inverse, center, middle
@@ -79,7 +93,9 @@ class: inverse, center, middle
 - Assess the benefit and cost effectiveness of "screen and vaccinate" strategy of CYD-TDV vaccine at individual and population level.
   - Under different transmission settings and screening test sensitivities.
   
-- Screen and vaccinate is beneficial on the individual level, and yielded lower negative impact on population level than that of vaccinate without screening
+- Beneficial on the individual level
+
+- Lower negative impact on population level than that of vaccinate without screening
 
 - Cost-effective except in very low transmission setting
 
@@ -95,18 +111,18 @@ class: inverse, center, middle
 &lt;img src="../assets/img/infection.png" width="1252" /&gt;
 ]
 
-- Unclear about performance of the model with respect to the past datasets
+- Unclear about performance of the model (e.g. validation)
   
 ---
 # Paper Critique
 
 - Detailed breakdown of cost on health system and social perspective
 
-&lt;img src="../assets/img/1-s2.0-S0264410X19316548-gr6_lrg.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="../assets/img/1-s2.0-S0264410X19316548-gr6_lrg.jpg" width="60%" style="display: block; margin: auto;" /&gt;
 
-- In light of Dengvaxia incident in the Philippines, hard to imagine vaccination without screening in anywhere even in area with very low transmission
+- In light of Dengvaxia incident in the Philippines, hard to imagine vaccination without screening in anywhere even in area with very low transmission.
 
-- Will be interesting to see how the the analyses translate into country-level operations, taking heterogeneity in transmission and costs into account.
+- Will be interesting to see how the analyses translate into country-level operations, taking heterogeneity in transmission and costs into account.
 
 ---
 class: inverse, center, middle
