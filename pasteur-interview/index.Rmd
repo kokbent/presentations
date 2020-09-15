@@ -18,17 +18,17 @@ class: inverse, center, middle
 ---
 # Academic background
 
-- PhD Interdisciplinary Ecology, University of Florida (2016 to Dec 2020)
+**2016 to Dec 2020** PhD Interdisciplinary Ecology, University of Florida
   - Comparison of spatial/spatiotemporal malaria mapping models
   - Guiding placement of health facilities using malaria criteria and interactive tool
   - Decision support tool to predict causes of childhood febrile illness using a Bayesian model approach
   
-- MSc Statistics, University of Florida (2017 to 2019)
+**2017 to 2019** MSc Statistics, University of Florida
 
-- MSc Biology, National University of Singapore (2008 to 2010)
+**2008 to 2010** MSc Biology, National University of Singapore
   - Evaluating determinants of camouflage using computer simulation and human predators
 
-- BSc (Hons) Life Sciences, National University of Singapore (2003 to 2007)
+**2003 to 2007** BSc (Hons) Life Sciences, National University of Singapore 
 
 ---
 class: inverse, center, middle
