@@ -6,6 +6,7 @@
     <meta name="author" content="Kok Ben Toh" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="snre-exit.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -131,73 +132,128 @@ class: inverse, center, middle
 &lt;img src="../assets/img/temporal-choice.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
-# Inference of time varying parameters
+# Objectives
 
-- State/county reported cases, hospitalization and death
-- Report delay of test results (State line list)
-- Social distancing metric (Safegraph cellphone tracking data)
+- To determine if GAM and state-of-the-art machine learning method (e.g. GBM), under both spatial and spatio-temporal setting, can be good alternatives to the more complicated SPDE method
 
-&lt;img src="../assets/img/counties-sdm.png" width="90%" style="display: block; margin: auto;" /&gt;
+- To determine if inclusion of past data is beneficial in modeling the current spatial distribution of malaria prevalence at the national scale
 
 ---
-# Impact?
+# Model comparison
 
-.pull-left[
-&lt;img src="../assets/img/Vaccine.png" width="2000" /&gt;
+- Ten-fold cross-validation
+
+- 4 models (SPDE, GAM, GBM and stepwise logistic regression)
+
+- 2 settings (Spatial vs Spatiotemporal)
+
+- 5 countries (Burkina Faso, Malawi, Mali, Nigeria, Uganda)
+
+- 2 metrics (Log-likelihood and Mean Absolute Error, MAE)
+
+---
+# Results
+
+- GAM and SPDE 👍
+
+&lt;img src="../assets/img/BF_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- GAM and SPDE 🙌
+
+&lt;img src="../assets/img/UG_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- Very small difference among top models (look at the axis)
+
+&lt;img src="../assets/img/NG_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- GBM 😲
+
+&lt;img src="../assets/img/ML_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Results
+
+- GBM 😲 GAM 😨
+
+&lt;img src="../assets/img/MW_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Spatial vs Spatiotemporal setting
+
+&lt;img src="../assets/img/Diff-MAE-pres.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Discussions
+
+.pull-left1[
+- SPDE performance is consistent, but no improvement when borrowing strength from the past
+
+- Formulation assumes similar past and present spatial dependency
+  - Can be horribly wrong...
 ]
 
-.pull-right[
-&lt;img src="../assets/img/Vaccine2.png" width="2000" /&gt;
+.pull-right1[
+&lt;img src="../assets/img/BF-predmaps.png" width="1235" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Discussions
+.pull-left1[
+- GAM performs on par with SPDE, especially with more data
+  - Good, fast and simple to use alternative
+
+- Splines can have unexpected behaviours at the edges
+
+- Dismal performance in irregularly shaped countries
+  - e.g. high perimeter to root area ratio
+]
+
+.pull-right1[
+&lt;img src="../assets/img/MW-predmaps.png" width="1181" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
 class: inverse, center, middle
 
-# Paper Critique
+# Interlude 1
 
 ---
-# Paper Critique
+# Malaria treatment
 
-- Coudeville, L, Baurin, N, Shepard, DS, (2020) The potential impact of dengue vaccination with, and without, pre-vaccination screening. *Vaccine* 38(6):1363-1369.
+- The most famous antimalarial drug is... Chloroquine
 
-- Assess the benefit and cost effectiveness of "screen and vaccinate" strategy of CYD-TDV vaccine at individual and population level.
-  - Under different transmission settings and screening test sensitivities.
-  
-- Beneficial on the individual level
+--
 
-- Lower negative impact on population level than that of vaccinate without screening
+- But currently, the state-of-the-art drug is the *Artemisinin (Qinghaosu, 青蒿素)* and derivatives.
 
-- Cost-effective except in very low transmission setting
+- Discovered in 1972 by *Project 523* led by Tu Youyou (屠呦呦)
 
----
-# Paper Critique
+- Awarded 2015 Nobel Prize in Medicine
 
-.pull-left[
-- Deterministic compartmental model: Complex and comprehensive
-  - Account for cross protection, cross enhancement, waning of immunity, stages of infections
-]
+&lt;img src="../assets/img/Tu-Youyou-meme.jpg" width="50%" style="display: block; margin: auto;" /&gt;
 
-.pull-right[
-&lt;img src="../assets/img/infection.png" width="1252" /&gt;
-]
-
-- Unclear about performance of the model (e.g. validation)
-  
----
-# Paper Critique
-
-- Detailed breakdown of cost on health system and social perspective
-
-&lt;img src="../assets/img/1-s2.0-S0264410X19316548-gr6_lrg.jpg" width="60%" style="display: block; margin: auto;" /&gt;
-
-- In light of Dengvaxia incident in the Philippines, hard to imagine vaccination without screening in anywhere even in area with very low transmission.
-
-- Will be interesting to see how the analyses translate into country-level operations, taking heterogeneity in transmission and costs into account.
+.footnote[*Picture source: Internet, creator unknown*]
 
 ---
-class: inverse, center, middle
+# Artemisinin
 
-# Thank you!
+- Isolated from *Artemisia annua*
+
+- Traditional Chinese Medicine
+
+- Prescription for malaria in 4th century AD by Ge Hong (葛洪)
+
+&lt;img src="../assets/img/zhou-hou-fang-malaria.jpeg" width="50%" style="display: block; margin: auto;" /&gt;
+
+.footnote[*Picture source: * [chinadaily.com.cn](http://china.chinadaily.com.cn/a/201901/27/WS5c4d2c9ba31010568bdc6a44.html)]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

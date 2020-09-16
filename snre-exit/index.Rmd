@@ -5,11 +5,13 @@ author: "Kok Ben Toh"
 date: "2020/09/21"
 output:
   xaringan::moon_reader:
+    css: ["default", "default-fonts", "snre-exit.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      
 ---
 class: inverse, center, middle
 
@@ -162,4 +164,123 @@ knitr::include_graphics("../assets/img/temporal-choice.png")
 ---
 # Results
 
+- GAM and SPDE 👍
 
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/BF_LLMAE.png")
+```
+
+---
+# Results
+
+- GAM and SPDE 🙌
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/UG_LLMAE.png")
+```
+
+---
+# Results
+
+- Very small difference among top models (look at the axis)
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/NG_LLMAE.png")
+```
+
+---
+# Results
+
+- GBM 😲
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/ML_LLMAE.png")
+```
+---
+# Results
+
+- GBM 😲 GAM 😨
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/MW_LLMAE.png")
+```
+
+---
+# Spatial vs Spatiotemporal setting
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/Diff-MAE-pres.png")
+```
+
+---
+# Discussions
+
+.pull-left1[
+- SPDE performance is consistent, but no improvement when borrowing strength from the past
+
+- Formulation assumes similar past and present spatial dependency
+  - Can be horribly wrong...
+]
+
+.pull-right1[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/BF-predmaps.png")
+```
+]
+
+---
+# Discussions
+.pull-left1[
+- GAM performs on par with SPDE, especially with more data
+  - Good, fast and simple to use alternative
+
+- Splines can have unexpected behaviours at the edges
+
+- Dismal performance in irregularly shaped countries
+  - e.g. high perimeter to root area ratio
+]
+
+.pull-right1[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/MW-predmaps.png")
+```
+]
+
+---
+class: inverse, center, middle
+
+# Interlude 1
+
+---
+# Malaria treatment
+
+- The most famous antimalarial drug is... Chloroquine
+
+--
+
+- But currently, the state-of-the-art drug is the *Artemisinin (Qinghaosu, 青蒿素)* and derivatives.
+
+- Discovered in 1972 by *Project 523* led by Tu Youyou (屠呦呦)
+
+- Awarded 2015 Nobel Prize in Medicine
+
+```{r echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("../assets/img/Tu-Youyou-meme.jpg")
+```
+
+.footnote[*Picture source: Internet, creator unknown*]
+
+---
+# Artemisinin
+
+- Isolated from *Artemisia annua*
+
+- Traditional Chinese Medicine
+
+- Prescription for malaria in 4th century AD by Ge Hong (葛洪)
+
+```{r echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("../assets/img/zhou-hou-fang-malaria.jpeg")
+```
+
+.footnote[*Picture source: * [chinadaily.com.cn](http://china.chinadaily.com.cn/a/201901/27/WS5c4d2c9ba31010568bdc6a44.html)]
