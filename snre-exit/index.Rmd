@@ -18,6 +18,37 @@ class: inverse, center, middle
 # Introduction to Malaria
 
 ---
+# Introduction to Malaria
+
+.pull-left1[
+- Caused by protozoan parasite *Plasmodium*
+
+- 4 + 1 species that causes human malaria
+  - *P. falciparum* most prevalent in Africa
+
+- Mosquito-borne disease
+]
+
+.pull-right1[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/malaria-life-cycle.jpg")
+```
+.footnote[Picture source: [Johns Hopkins Bloomberg School of Public Health](http://ocw.jhsph.edu)]
+]
+
+---
+# Stats and Geography
+
+- 230 million cases worldwide in 2018; 400k death, 2/3 under 5 years old
+
+- Distribution of disease
+  - Tropics: Sub-Saharan Africa, South and Southeast Asia, Latin America
+  - Correlated to environmental and socio-economic factors
+  
+```{r echo=FALSE, out.width="95%", fig.align='center'}
+knitr::include_graphics("../assets/img/world-malaria-map.png")
+```
+.footnote[Picture source: [Malaria Atlas Project](https://malariaatlas.org/)]
 
 ---
 # Overview
@@ -196,6 +227,7 @@ knitr::include_graphics("../assets/img/NG_LLMAE.png")
 ```{r echo=FALSE, out.width="60%", fig.align='center'}
 knitr::include_graphics("../assets/img/ML_LLMAE.png")
 ```
+
 ---
 # Results
 
@@ -260,11 +292,11 @@ class: inverse, center, middle
 
 - But currently, the state-of-the-art drug is the *Artemisinin (Qinghaosu, 青蒿素)* and derivatives.
 
-- Discovered in 1972 by *Project 523* led by Tu Youyou (屠呦呦)
+- First isolated in 1972 by Tu Youyou (屠呦呦) and members of *Project 523*
 
 - Awarded 2015 Nobel Prize in Medicine
 
-```{r echo=FALSE, out.width="50%", fig.align='center'}
+```{r echo=FALSE, out.width="45%", fig.align='center'}
 knitr::include_graphics("../assets/img/Tu-Youyou-meme.jpg")
 ```
 
@@ -284,3 +316,39 @@ knitr::include_graphics("../assets/img/zhou-hou-fang-malaria.jpeg")
 ```
 
 .footnote[*Picture source: * [chinadaily.com.cn](http://china.chinadaily.com.cn/a/201901/27/WS5c4d2c9ba31010568bdc6a44.html)]
+
+---
+class: inverse, center, middle
+
+# Guiding placement of health facilities using malaria criteria and interactive tool
+
+---
+# Accessibility to health facility and malaria prevalence
+
+---
+# Bunkpurugu-Yunyoo District, Northern Ghana
+
+---
+# Expansion of health services?
+
+---
+# Objectives
+
+---
+# Methods
+
+---
+# Results
+
+---
+# Results
+
+---
+# Interactive visualizer and simulator
+
+---
+# Take home message
+
+---
+
+---
