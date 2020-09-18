@@ -489,6 +489,15 @@ Ideal statistical decision support tool:
 - Informative and Interpretable
 
 ---
+# Objectives
+
+To modify a Bayesian Model Averaging method such that it can simultaneously impute missing variables and make predictions
+
+Evaluate the capability of the model to make statistical inference and prediction vs other models
+
+To create a decision support prototype as a proof-of-concept that the modified method can be incorporated into a usable interactive tool
+
+---
 # Data
 
 - 2016/2017
@@ -542,7 +551,11 @@ knitr::include_graphics("../assets/img/mvp-bma-prediction-schema.png")
 ```
 
 ---
-# Comparison: Out of sample prediction
+# Performance vs other methods
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("../assets/img/afi-msev3.png")
+```
 
 ---
 # Key findings
