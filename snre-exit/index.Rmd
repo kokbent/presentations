@@ -154,6 +154,8 @@ knitr::include_graphics("../assets/img/gbm-schema3.png")
 - E.g. Random forests, gradient boosting tree/method (GBM)
 ]
 
+--
+
 .pull-right[
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 knitr::include_graphics("../assets/img/spde-gamgbm-length.png")
@@ -325,30 +327,225 @@ class: inverse, center, middle
 ---
 # Accessibility to health facility and malaria prevalence
 
+- Early diagnosis and treatment reduce transmission and death
+
+- Many factors contribute to accessibility to health facilities
+
+- Distance or travel time to health facilities is important predictor to malaria prevalence
+
 ---
-# Bunkpurugu-Yunyoo District, Northern Ghana
+# Bunkpurugu-Yunyoo District, Ghana
+
+.pull-left1[
+- Malaria prevalence range 19% to 90%
+
+- Important predictors
+  - Distance to health facilities (HF)
+  - Distance to urban centers
+  - Elevation, vegetation index, population density
+]
+
+.pull-right1[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/byd-simplemap.png")
+```
+]
 
 ---
 # Expansion of health services?
 
+- Community-based Health Planning and Services (CHPS)
+  - Run by trained community health officers (CHOs)
+  - Assigned to community health post, services at doorstep
+  - Treatment for malaria, acute respiratory diseases and other childhood illness
+  
+- Expand CHPS to all communities
+
+- Major indicators: Mortality rate, maternal and children health
+
 ---
 # Objectives
+
+- Determine the optimal locations for new health facilities based on district-wide malaria criteria:
+  1. Overall malaria prevalence of children under 5, 
+  2. Overall malaria incidence of all ages, and 
+  3. Average travel time to nearest health facilities
+  
+- Multi-layer problem: Map, model, population distribution, prevalence vs incidence
+
+---
+# Prevalence vs Incidence
+
+- Prevalence (0 to 1): snapshot of the population at a single point in time
+
+- Incidence (# per person-year): number of instances during a given period in the population of interest
+
+- Conversion from prevalence under five to incidence of all ages
+  - Prevalence → Incidence not always linear, especially for older children and adults
 
 ---
 # Methods
 
----
-# Results
+- Three years of high transmission season data (2010 to 2012)
+
+- ~ 5000 children under five, 71 to 80 villages per year
+
+- 5 predictors
+  - Travel time to HF, distance to urban center, elevation, NDVI, log population density
+  
+- GAM with splines on elevation
 
 ---
-# Results
+# Optimization
+
+- Procedures:
+  - Add new facilit(ies) onto the map
+  - Recalculate travel time to nearest health facilities
+  - Use model to predict new sets of covariates
+  - Calculate district-wide metrics
+  
+- Genetic algorithm
+
+- Find one up to five optimal locations for each criteria
+
+- Consider two scenario:
+  1. New facilities on top of existing ones
+  2. "Remove" existing CHPS, then add new facilities on top
+
+---
+# Results: Scenario 1
+
+```{r echo=FALSE, out.width = "65%", fig.align='center'}
+knitr::include_graphics("../assets/img/opt-locs.png")
+```
+
+---
+# Results: Scenario 2
+
+```{r echo=FALSE, out.width = "65%", fig.align='center'}
+knitr::include_graphics("../assets/img/opt-locs-nochps.png")
+```
 
 ---
 # Interactive visualizer and simulator
 
----
-# Take home message
+- Interactive visualizers extremely common in this pandemic
+
+- Interactive contents can be more engaging than static graphics
+
+- Interactive simulator allows users to interact, use and experiment with the models
+
+- Communicate complex analyses
+
+- Creating interactive web applications and maps are increasingly streamlined
+  - Does not require extensive knowledge of HTML and Javascript
+  
+--
+  
+  - Yes you still need to know R...But...
 
 ---
+# Demo
+
+https://kokbent.shinyapps.io/hf-update/
 
 ---
+class: inverse, center, middle
+
+# Decision Support Tool to Predict Causes of Childhood Febrile Illness Using a Bayesian Model Approach
+
+---
+# Childhood Acute Febrile Illness (AFI)
+
+.pull-left2[
+- Malaria used to be the main cause of AFI in Africa
+
+- With decline in malaria transmission, other etiologies such as bacterial infection can be increasingly prominent
+
+- Difficulty in diagnosis, lack of test kit and prioritization of malaria can drive up misdiagnosis
+]
+
+.pull-right2[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/fever-clipart.png")
+```
+]
+
+Predicting infection status based on symptoms, demographic variables and hematological variables
+
+---
+# Statistical decision support tool
+
+Interactive tools that inform health practitioners using predicted probability (of infection)
+
+https://kokbent.shinyapps.io/AFI_Test2/
+
+--
+
+Ideal statistical decision support tool:
+- Accommodate missing data
+- User experience: Fast, small and flexible
+- Accurate
+- Informative and Interpretable
+
+---
+# Data
+
+- 2016/2017
+- 1500 children 1 to 15 years old
+
+```{r echo=FALSE, out.width = "60%", fig.align='center'}
+knitr::include_graphics("../assets/img/afi-study-design.png")
+```
+
+---
+# Data
+
+Model diagnostic test outcomes using the recorded predictors
+
+.pull-left[
+Diagnostic Tests
+- Malaria 
+  - Rapid Diagnostic Test (RDT)
+  - Microscopy
+  - Taqman Array Card (TAC; Subsample)
+- Blood and Urine Culture if deemed necessary
+]
+
+.pull-right[
+Recorded Predictors
+  - Age
+  - Time of visit (season)
+  - Body temperature
+  - 30 clinical symptoms (Binary)
+  - 10 Hematological parameters
+]
+
+.center[
+😨 Missing values in 
+- 31/43 predictors (Most < 5%)
+- 17% individuals
+]
+
+---
+# Model training
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("../assets/img/mvp-bma-training-schema.png")
+```
+
+---
+# Model prediction
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("../assets/img/mvp-bma-prediction-schema.png")
+```
+
+---
+# Comparison: Out of sample prediction
+
+---
+# Key findings
+
+---
+# Key findings

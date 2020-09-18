@@ -9,3 +9,15 @@
 .pull-right1 ~ p {
   clear: both;
 }
+
+.pull-left2 {
+  float: left;
+  width: 70%;
+}
+.pull-right2 {
+  float: right;
+  width: 25%;
+}
+.pull-right2 ~ p {
+  clear: both;
+}
