@@ -53,15 +53,32 @@ class: inverse, center, middle
 .footnote[Picture source: [Malaria Atlas Project](https://malariaatlas.org/)]
 
 ---
+# Modeling Malaria
+
+.pull-left[
+- Integral part of understanding malaria
+
+- Mathematical, e.g.
+  - Compartmental deterministic model to understand disease transmissions
+
+- Statistics
+  - Risk factor analysis
+  - Mapping malaria risks
+  - Clinical diagnosis
+]
+
+.pull-right[
+&lt;img src="../assets/img/malaria-compartment.jpg" width="1600" style="display: block; margin: auto;" /&gt;
+]
+
+---
 # Overview
 
 - Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
 
-- Interlude 1
+- Interlude
 
 - Guiding placement of health facilities using malaria criteria and interactive tool
-
-- Interlude 2
 
 - Decision Support Tool to Predict Causes of Childhood Febrile Illness Using a Bayesian Model Approach
 
@@ -109,46 +126,31 @@ class: inverse, center, middle
 ---
 # Alternative model?
 
+.pull-left[
+&lt;img src="../assets/img/spde-gamgbm-length.png" width="50%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+- SPDE-INLA is complicated
+
+- Can we use faster and simpler alternatives instead?
+]
+
+---
+# Alternative model 1
+
 - Spatial smoothing using Generalized Additive Model (GAM)
   - An underlying smoothed "landscape" unexplained by the covariates
 
 &lt;img src="../assets/img/gam-smoothed.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
-# Machine learning?
+# Alternative model 2: Machine learning
 
-- Decision tree
-
-&lt;img src="../assets/img/gbm-schema1.png" width="40%" style="display: block; margin: auto;" /&gt;
-
----
-# Machine learning?
-
-- Decision tree
-
-&lt;img src="../assets/img/gbm-schema2.png" width="45%" style="display: block; margin: auto;" /&gt;
-
----
-# Machine learning?
-
-- Decision tree
+- Decision-trees ensemble methods
+  - E.g. Random forests, gradient boosting tree/method (GBM)
 
 &lt;img src="../assets/img/gbm-schema3.png" width="50%" style="display: block; margin: auto;" /&gt;
-
----
-# Machine learning?
-
-.pull-left[
-- Decision-trees ensemble methods
-
-- E.g. Random forests, gradient boosting tree/method (GBM)
-]
-
---
-
-.pull-right[
-&lt;img src="../assets/img/spde-gamgbm-length.png" width="50%" style="display: block; margin: auto;" /&gt;
-]
 
 ---
 # Borrow strength from the past?
@@ -168,17 +170,33 @@ class: inverse, center, middle
 - To determine if inclusion of past data is beneficial in modeling the current spatial distribution of malaria prevalence at the national scale
 
 ---
+# Data
+
+- Demographic Health Survey data from five countries
+
+- Spatial covariates: free and publicly available remote sensing or GIS products
+
+.pull-left[
+&lt;img src="../assets/img/map-chp1-5cty.png" width="1365" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="../assets/img/chp1-covars-layer.png" width="1365" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
 # Model comparison
 
-- Ten-fold cross-validation
+- 5 countries × 4 models × 2 settings
+- Spatial setting
 
-- 4 models (SPDE, GAM, GBM and stepwise logistic regression)
+&lt;img src="../assets/img/chp1-schema-sp.png" width="2028" style="display: block; margin: auto;" /&gt;
 
-- 2 settings (Spatial vs Spatiotemporal)
+- Spatiotemporal setting
 
-- 5 countries (Burkina Faso, Malawi, Mali, Nigeria, Uganda)
+&lt;img src="../assets/img/chp1-schema-st.png" width="2029" style="display: block; margin: auto;" /&gt;
 
-- 2 metrics (Log-likelihood and Mean Absolute Error, MAE)
 
 ---
 # Results
@@ -223,37 +241,26 @@ class: inverse, center, middle
 ---
 # Discussions
 
-.pull-left1[
-- SPDE performance is consistent, but no improvement when borrowing strength from the past
+- No single best model, performance varies from setting to setting and country to country
 
-- Formulation assumes similar past and present spatial dependency
-  - Can be horribly wrong...
-]
-
-.pull-right1[
-&lt;img src="../assets/img/BF-predmaps.png" width="1235" style="display: block; margin: auto;" /&gt;
-]
+- SPDE is consistent, but doesn't gain much from incorporating past data
+  - Can deteriorate when past and present spatial dependency are very different
+  
+- GAM is good, fast and simple-to-use alternative, especially with more data
+  - Dismal performance in irregularly shaped countries
+  - High perimeter to root area ratio: Malawi 8.7, Uganda 5.7
 
 ---
 # Discussions
-.pull-left1[
-- GAM performs on par with SPDE, especially with more data
-  - Good, fast and simple to use alternative
 
-- Splines can have unexpected behaviours at the edges
+- GBM unpredictable but generally fits well with more data available
 
-- Dismal performance in irregularly shaped countries
-  - e.g. high perimeter to root area ratio
-]
-
-.pull-right1[
-&lt;img src="../assets/img/MW-predmaps.png" width="1181" style="display: block; margin: auto;" /&gt;
-]
+- Fit multiple model or at least benchmark with GAM
 
 ---
 class: inverse, center, middle
 
-# Interlude 1
+# Interlude
 
 ---
 # Malaria treatment
@@ -291,11 +298,21 @@ class: inverse, center, middle
 # Guiding placement of health facilities using malaria criteria and interactive tool
 
 ---
-# Accessibility to health facility and malaria prevalence
+# Access to healthcare and malaria transmission
 
-- Early diagnosis and treatment reduce transmission and death
+&lt;img src="../assets/img/chp2-remote-schema1.png" width="60%" style="display: block; margin: auto;" /&gt;
 
-- Many factors contribute to accessibility to health facilities
+---
+# Access to healthcare and malaria transmission
+
+&lt;img src="../assets/img/chp2-remote-schema2.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Distance / Travel time to health facilities
+
+- Early diagnosis and treatment reduce death and transmission
+
+- Many factors contribute to access to healthcare
 
 - Distance or travel time to health facilities is important predictor to malaria prevalence
 
@@ -303,12 +320,15 @@ class: inverse, center, middle
 # Bunkpurugu-Yunyoo District, Ghana
 
 .pull-left1[
-- Malaria prevalence range 19% to 90%
+- 1200 km `\(^2\)` , 150K populations
+
+- 2 urban centers, 8 health facilities
+
+- Multiple years of malaria surveys in 2010 - 2014
 
 - Important predictors
   - Distance to health facilities (HF)
   - Distance to urban centers
-  - Elevation, vegetation index, population density
 ]
 
 .pull-right1[
@@ -325,7 +345,19 @@ class: inverse, center, middle
   
 - Expand CHPS to all communities
 
-- Major indicators: Mortality rate, maternal and children health
+---
+# Prevalence vs Incidence
+
+- Prevalence (0 to 1): snapshot of the population at a single point in time
+
+- Incidence (per person-year): number of instances during a given period in the population of interest
+
+- Have: Prevalence under 5 years old
+
+- Want: Incidence (of all ages)
+
+- Conversion from prevalence under five to incidence of all ages
+  - Prevalence → Incidence not always linear, especially for older children and adults
 
 ---
 # Objectives
@@ -335,18 +367,6 @@ class: inverse, center, middle
   2. Overall malaria incidence of all ages, and 
   3. Average travel time to nearest health facilities
   
-- Multi-layer problem: Map, model, population distribution, prevalence vs incidence
-
----
-# Prevalence vs Incidence
-
-- Prevalence (0 to 1): snapshot of the population at a single point in time
-
-- Incidence (# per person-year): number of instances during a given period in the population of interest
-
-- Conversion from prevalence under five to incidence of all ages
-  - Prevalence → Incidence not always linear, especially for older children and adults
-
 ---
 # Methods
 
@@ -354,60 +374,53 @@ class: inverse, center, middle
 
 - ~ 5000 children under five, 71 to 80 villages per year
 
-- 5 predictors
+- GAM with 5 predictors
   - Travel time to HF, distance to urban center, elevation, NDVI, log population density
-  
-- GAM with splines on elevation
 
 ---
 # Optimization
 
-- Procedures:
-  - Add new facilit(ies) onto the map
-  - Recalculate travel time to nearest health facilities
-  - Use model to predict new sets of covariates
-  - Calculate district-wide metrics
+&lt;!-- - Procedures: --&gt;
+&lt;!--   - Add new facilit(ies) onto the map --&gt;
+&lt;!--   - Recalculate travel time to nearest health facilities --&gt;
+&lt;!--   - Use model to predict new sets of covariates --&gt;
+&lt;!--   - Calculate district-wide metrics --&gt;
   
-- Genetic algorithm
+- Specify number of health facilities and criteria
+
+- Start in some random intial locations
+
+- Use genetic algorithm to find locations that minimize metric
 
 - Find one up to five optimal locations for each criteria
 
-- Consider two scenario:
-  1. New facilities on top of existing ones
-  2. "Remove" existing CHPS, then add new facilities on top
-
 ---
-# Results: Scenario 1
+# Results
 
-&lt;img src="../assets/img/opt-locs.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;!-- # Results: Scenario 1 --&gt;
 
----
-# Results: Scenario 2
+&lt;!-- ```{r echo=FALSE, out.width = "65%", fig.align='center'} --&gt;
+&lt;!-- knitr::include_graphics("../assets/img/opt-locs.png") --&gt;
+&lt;!-- ``` --&gt;
 
-&lt;img src="../assets/img/opt-locs-nochps.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;!-- --- --&gt;
+&lt;!-- # Results: Scenario 2 --&gt;
 
----
-# Interactive visualizer and simulator
+&lt;!-- ```{r echo=FALSE, out.width = "65%", fig.align='center'} --&gt;
+&lt;!-- knitr::include_graphics("../assets/img/opt-locs-nochps.png") --&gt;
+&lt;!-- ``` --&gt;
 
-- Interactive visualizers extremely common in this pandemic
+&lt;!-- --- --&gt;
 
-- Interactive contents can be more engaging than static graphics
+- See interactive visualizer and simulator created.
+  - https://kokbent.shinyapps.io/hf-update/
 
-- Interactive simulator allows users to interact, use and experiment with the models
+&lt;!-- - Using R Shiny, leaflet and other packages to create interactive maps --&gt;
+&lt;!--   - Cross platform and does not require knowledge in HTML/Javascript --&gt;
 
-- Communicate complex analyses
+&lt;!-- - Better presentation of results --&gt;
 
-- Creating interactive web applications and maps are increasingly streamlined
-  - Does not require extensive knowledge of HTML and Javascript
-  
---
-  
-  - Yes you still need to know R...But...
-
----
-# Demo
-
-https://kokbent.shinyapps.io/hf-update/
+&lt;!-- - Allows users to interact, use and experiment with the models --&gt;
 
 ---
 class: inverse, center, middle
@@ -510,8 +523,44 @@ Recorded Predictors
 ---
 # Key findings
 
+- The modified BMA works well in terms of statistical inference and prediction accuracy
+  - Similar to random forest in prediction, better than stepwise logistic regressions
+
+- Provides predictor importance for each diagnostic test; Interpretable
+
+- Can be incorporated into a relatively responsive interactive decision support tool
+
 ---
 # Key findings
+
+- Poor predictive performance with Malaria TAC
+  - Low sample size
+  - Submicroscopic infection is asymptomatic → Symptoms are not useful predictors
+
+- Poor predictive performance with Blood culture
+  - Low sample size
+  - Multiple types of pathogens – diverse signs and symptoms
+  
+---
+# References
+
+
+---
+# Acknowledgement
+
+- Dr Denis Valle
+- Committee members: Dr Nikolay Bliznyuk, Dr Rhoel Dinglasan, Dr Tom Hladish
+- Collaborators: 
+  - Dr Gordon Awandare, Dr Justin Stoler, Dr Nicholas Amoako and WACCBIP; 
+  - Dr Benjamin Abuaku, Dr Paul Psychas, Noguchi Medical Research Institute and President's Malaria Initiative
+- Labmates
+- Family and friends
+
+---
+class: inverse, center, middle
+
+# Thank you very much! 
+Feedback, comments and questions? Email: kokbent [at] ufl.edu
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
