@@ -1,5 +1,5 @@
 ---
-title: "Modeling Malaria: Models and Applications"
+title: "Modeling Malaria: Methods and Applications"
 subtitle: "SNRE Exit Seminar<br/> (Slides available at: bit.ly/bentoh-exit)"
 author: "Kok Ben Toh"
 date: "2020/09/21"
