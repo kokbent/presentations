@@ -21,3 +21,10 @@
 .pull-right2 ~ p {
   clear: both;
 }
+
+.source {
+  position: relative;
+  float: right;
+  bottom: 0em;
+  font-size: 75%;
+}

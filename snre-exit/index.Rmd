@@ -1,6 +1,6 @@
 ---
 title: "Modeling Malaria: Models and Applications"
-subtitle: "SNRE Exit Seminar"
+subtitle: "SNRE Exit Seminar<br/> (Slides available at: bit.ly/bentoh-exit)"
 author: "Kok Ben Toh"
 date: "2020/09/21"
 output:
@@ -33,7 +33,7 @@ class: inverse, center, middle
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("../assets/img/malaria-life-cycle.jpg")
 ```
-.footnote[Picture source: [Johns Hopkins Bloomberg School of Public Health](http://ocw.jhsph.edu)]
+.source[*[Johns Hopkins Bloomberg School of Public Health](http://ocw.jhsph.edu)*]
 ]
 
 ---
@@ -48,7 +48,7 @@ knitr::include_graphics("../assets/img/malaria-life-cycle.jpg")
 ```{r echo=FALSE, out.width="95%", fig.align='center'}
 knitr::include_graphics("../assets/img/world-malaria-map.png")
 ```
-.footnote[Picture source: [Malaria Atlas Project](https://malariaatlas.org/)]
+.source[*(Weiss et al. 2019)*]
 
 ---
 # Modeling Malaria
@@ -69,6 +69,7 @@ knitr::include_graphics("../assets/img/world-malaria-map.png")
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("../assets/img/malaria-compartment.jpg")
 ```
+.source[*(Mandal et al. 2011)*]
 ]
 
 ---
@@ -311,7 +312,7 @@ class: inverse, center, middle
 knitr::include_graphics("../assets/img/Tu-Youyou-meme.jpg")
 ```
 
-.footnote[*Picture source: Internet, creator unknown*]
+.source[*Internet, creator unknown*]
 
 ---
 # Artemisinin
@@ -320,13 +321,13 @@ knitr::include_graphics("../assets/img/Tu-Youyou-meme.jpg")
 
 - Traditional Chinese Medicine
 
-- Prescription for malaria in 4th century AD by Ge Hong (葛洪)
+- Prescription for malaria in 4th century AD
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 knitr::include_graphics("../assets/img/zhou-hou-fang-malaria.jpeg")
 ```
 
-.footnote[*Picture source: * [chinadaily.com.cn](http://china.chinadaily.com.cn/a/201901/27/WS5c4d2c9ba31010568bdc6a44.html)]
+.source[*[chinadaily.com.cn](http://china.chinadaily.com.cn/a/201901/27/WS5c4d2c9ba31010568bdc6a44.html)*]
 
 ---
 class: inverse, center, middle
@@ -366,7 +367,7 @@ knitr::include_graphics("../assets/img/chp2-remote-schema2.png")
 
 - Multiple years of malaria surveys in 2010 - 2014
 
-- Important predictors
+- Important predictors *(Amratia et al. 2019; Millar et al. 2018)*
   - Distance to health facilities (HF)
   - Distance to urban centers
 ]
@@ -405,8 +406,11 @@ knitr::include_graphics("../assets/img/byd-simplemap.png")
 # Objectives
 
 - Determine the optimal locations for new health facilities based on district-wide malaria criteria:
+
   1. Overall malaria prevalence of children under 5, 
+  
   2. Overall malaria incidence of all ages, and 
+  
   3. Average travel time to nearest health facilities
   
 ---
@@ -478,15 +482,16 @@ class: inverse, center, middle
 - With decline in malaria transmission, other etiologies such as bacterial infection can be increasingly prominent
 
 - Difficulty in diagnosis, lack of test kit and prioritization of malaria can drive up misdiagnosis
+
+- Predicting infection status based on symptoms, demographic variables and hematological variables
 ]
 
 .pull-right2[
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("../assets/img/fever-clipart.png")
 ```
+.source[*[kissclipart.com](https://www.kissclipart.com/cartoon-thermometer-clipart-thermometer-fever-clip-p9mkzm/)*]
 ]
-
-Predicting infection status based on symptoms, demographic variables and hematological variables
 
 ---
 # Statistical decision support tool
