@@ -25,8 +25,7 @@ class: inverse, center, middle
 .pull-left1[
 - Caused by protozoan parasite *Plasmodium*
 
-- 4 + 1 species that causes human malaria
-  - *P. falciparum* most prevalent in Africa
+- 5 species that causes human malaria
 
 - Mosquito-borne disease
 ]
@@ -98,24 +97,6 @@ class: inverse, center, middle
 ```{r echo=FALSE}
 knitr::include_graphics("../assets/img/malaria-risk-bf-intro.png")
 ```
-
----
-# Ingredients
-
-- National Malaria Survey Data
-
-- Spatial predictors
-
-  - Temperature
-  - Rainfall
-  - Nighttime lights
-  - Accessibility to urban centers
-  - Elevation
-  - etc.
-
---
-
-- And a model...
 
 ---
 # Choice of Model
@@ -285,12 +266,9 @@ knitr::include_graphics("../assets/img/Diff-MAE-pres.png")
   - Dismal performance in irregularly shaped countries
   - High perimeter to root area ratio: Malawi 8.7, Uganda 5.7
 
----
-# Discussions
-
 - GBM unpredictable but generally fits well with more data available
 
-- Fit multiple model or at least benchmark with GAM
+- 🏠💬 Fit multiple model or at least benchmark with GAM
 
 ---
 class: inverse, center, middle
@@ -357,7 +335,7 @@ knitr::include_graphics("../assets/img/chp2-remote-schema2.png")
 
 - Many factors contribute to access to healthcare
 
-- Distance or travel time to health facilities is important predictor to malaria prevalence
+- Distance or travel time to health facilities is important predictor to malaria prevalence *(e.g. Schoeps et al. 2011, Kizito et al. 2012)*
 
 ---
 # Bunkpurugu-Yunyoo District, Ghana
@@ -384,8 +362,11 @@ knitr::include_graphics("../assets/img/byd-simplemap.png")
 # Expansion of health services?
 
 - Community-based Health Planning and Services (CHPS)
+
   - Run by trained community health officers (CHOs)
+  
   - Assigned to community health post, services at doorstep
+  
   - Treatment for malaria, acute respiratory diseases and other childhood illness
   
 - Expand CHPS to all communities
@@ -393,13 +374,13 @@ knitr::include_graphics("../assets/img/byd-simplemap.png")
 ---
 # Prevalence vs Incidence
 
-- Prevalence (0 to 1): snapshot of the population at a single point in time
+- Prevalence (0 to 1): Likelihood of a person in the area having malaria at a point in time
 
-- Incidence (per person-year): number of instances during a given period in the population of interest
+- Incidence: number of cases during a given period in the population of interest
 
-- Have: Prevalence under 5 years old
+- Available Data: Prevalence under 5 years old
 
-- Want: Incidence (of all ages)
+- Decision criteria: Incidence (of all ages)
 
 - Conversion from prevalence under five to incidence of all ages
   - Prevalence → Incidence not always linear, especially for older children and adults
@@ -420,13 +401,27 @@ knitr::include_graphics("../assets/img/byd-simplemap.png")
 
 - Three years of high transmission season data (2010 to 2012)
 
-- ~ 5000 children under five, 71 to 80 villages per year
+- ~ 5000 children under five
+
+- 71 to 80 villages per year
 
 - GAM with 5 predictors
   - Travel time to HF, distance to urban center, elevation, NDVI, log population density
+  
+- Use Genetic Algorithm to find optimal locations given number of health facilities and criteria
 
 ---
-# Optimization
+# Results
+
+- See interactive visualizer and simulator created.
+  - https://kokbent.shinyapps.io/hf-update/
+  
+### Pitch...
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/valle-conbio-grab.PNG")
+```
+
+<!-- # Optimization -->
 
 <!-- - Procedures: -->
 <!--   - Add new facilit(ies) onto the map -->
@@ -434,41 +429,15 @@ knitr::include_graphics("../assets/img/byd-simplemap.png")
 <!--   - Use model to predict new sets of covariates -->
 <!--   - Calculate district-wide metrics -->
   
-- Specify number of health facilities and criteria
+<!-- - Specify number of health facilities and criteria -->
 
-- Start in some random intial locations
+<!-- - Start in some random initial locations -->
 
-- Use genetic algorithm to find locations that minimize metric
+<!-- - Use genetic algorithm to find locations that minimize metric -->
 
-- Find one up to five optimal locations for each criteria
-
----
-# Results
-
-<!-- # Results: Scenario 1 -->
-
-<!-- ```{r echo=FALSE, out.width = "65%", fig.align='center'} -->
-<!-- knitr::include_graphics("../assets/img/opt-locs.png") -->
-<!-- ``` -->
+<!-- - Find one up to five optimal locations for each criteria -->
 
 <!-- --- -->
-<!-- # Results: Scenario 2 -->
-
-<!-- ```{r echo=FALSE, out.width = "65%", fig.align='center'} -->
-<!-- knitr::include_graphics("../assets/img/opt-locs-nochps.png") -->
-<!-- ``` -->
-
-<!-- --- -->
-
-- See interactive visualizer and simulator created.
-  - https://kokbent.shinyapps.io/hf-update/
-
-<!-- - Using R Shiny, leaflet and other packages to create interactive maps -->
-<!--   - Cross platform and does not require knowledge in HTML/Javascript -->
-
-<!-- - Better presentation of results -->
-
-<!-- - Allows users to interact, use and experiment with the models -->
 
 ---
 class: inverse, center, middle
@@ -513,11 +482,11 @@ Ideal statistical decision support tool:
 ---
 # Objectives
 
-To modify a Bayesian Model Averaging method such that it can simultaneously impute missing variables and make predictions
+- Create model to simultaneously
+  - Impute missing variables
+  - Make predictions
 
-Evaluate the capability of the model to make statistical inference and prediction vs other models
-
-To create a decision support prototype as a proof-of-concept that the modified method can be incorporated into a usable interactive tool
+- Modified Bayesian Model Averaging (BMA)
 
 ---
 # Data
@@ -532,7 +501,7 @@ knitr::include_graphics("../assets/img/afi-study-design.png")
 ---
 # Data
 
-Model diagnostic test outcomes using the recorded predictors
+- Model diagnostic test outcomes using the recorded predictors
 
 .pull-left[
 Diagnostic Tests
@@ -550,13 +519,14 @@ Recorded Predictors
   - Body temperature
   - 30 clinical symptoms (Binary)
   - 10 Hematological parameters
+  
+😨 Missing values in 
+  - 31/43 predictors (Most < 5%)
+  - 17% individuals
 ]
 
-.center[
-😨 Missing values in 
-- 31/43 predictors (Most < 5%)
-- 17% individuals
-]
+
+
 
 ---
 # Model training
@@ -582,10 +552,10 @@ knitr::include_graphics("../assets/img/afi-msev3.png")
 ---
 # Key findings
 
-- The modified BMA works well in terms of statistical inference and prediction accuracy
-  - Similar to random forest in prediction, better than stepwise logistic regressions
+- The modified BMA is as accurate as random forest without losing its interpretability
+  - Better than that of stepwise logistic regressions
 
-- Provides predictor importance for each diagnostic test; Interpretable
+- Provides predictor importance for each diagnostic test
 
 - Can be incorporated into a relatively responsive interactive decision support tool
 
@@ -603,6 +573,12 @@ knitr::include_graphics("../assets/img/afi-msev3.png")
 ---
 # References
 
+- Schoeps, Anja, et al. "The Effect of Distance to Health-Care Facilities on Childhood Mortality in Rural Burkina Faso", American Journal of Epidemiology 173, 5 (2011), pp. 492--498.
+- Kizito, James, et al. "Improving access to health care for malaria in Africa: a review of literature on what attracts patients", Malaria Journal 11, 1 (2012), pp. 55.
+- Weiss, D.J. et al. 2019. Mapping the global prevalence, incidence, and mortality of Plasmodium falciparum, 2000–17: a spatial and temporal modelling study. Lancet 394: 322–331.
+- Mandal, S. et al. Mathematical models of malaria - a review. Malar J 10, 202 (2011).
+- Millar, J. et al. 2018. Detecting local risk factors for residual malaria in northern Ghana using Bayesian model averaging. Malar. J. 17: 343.
+- Amratia, P. et al. 2019. Characterizing local-scale heterogeneity of malaria risk: A case study in Bunkpurugu-Yunyoo district in northern Ghana. Malar. J. 18: 1–14.
 
 ---
 # Acknowledgement
