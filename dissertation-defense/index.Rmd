@@ -1,0 +1,496 @@
+---
+title: "Predicting Malaria: Models and Their Applications"
+subtitle: "Dissertation Defense<br/> (Slides available at: bit.ly/bentoh-exit)"
+author: "Kok Ben Toh"
+date: "2020/10/26"
+output:
+  xaringan::moon_reader:
+    css: ["default", "default-fonts", "snre-exit.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: ../analytics/simple_analytics.html
+      
+---
+# Overview
+
+- Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
+
+- Guiding placement of health facilities using malaria criteria and interactive tool
+
+- Decision Support Tool to Predict Causes of Childhood Febrile Illness Using a Bayesian Model Approach
+
+---
+class: inverse, center, middle
+
+# Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
+
+---
+# Background summary
+
+.pull-right1[
+- Mapping of malaria prevalence based on national malaria survey data
+
+- Choices choices choices of models
+  - Common approach: SPDE-INLA
+  - Alternative: Generalized Additive Model (GAM)
+  - Alternative: Gradient Boosted Models/Trees (GBM)
+
+- More choices: To include the past dataset or not (Spatial vs Spatiotemporal settings)
+]
+
+.pull-left1[
+```{r echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("../assets/img/spde-gamgbm-length.png")
+```
+]
+
+---
+# Objectives
+
+- To determine if GAM and state-of-the-art machine learning method (e.g. GBM), under both spatial and spatio-temporal setting, can be good alternatives to the more complicated SPDE method
+
+- To determine if inclusion of past data is beneficial in modeling the current spatial distribution of malaria prevalence at the national scale
+
+---
+# Data
+
+- Demographic Health Survey data from five countries
+
+- Spatial covariates: free and publicly available remote sensing or GIS products
+
+.pull-left[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/map-chp1-5cty.png")
+```
+]
+
+.pull-right[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp1-covars-layer.png")
+```
+]
+
+---
+
+# Model comparison
+
+- 5 countries × 4 models × 2 settings
+- Spatial setting
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp1-schema-sp.png")
+```
+
+- Spatiotemporal setting
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp1-schema-st.png")
+```
+
+
+---
+# Results
+
+- GAM and SPDE 👍
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/BF_LLMAE.png")
+```
+
+---
+# Results
+
+- GAM and SPDE 🙌
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/UG_LLMAE.png")
+```
+
+---
+# Results
+
+- Very small difference among top models (look at the axis)
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/NG_LLMAE.png")
+```
+
+---
+# Results
+
+- GBM 😲
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/ML_LLMAE.png")
+```
+
+---
+# Results
+
+- GBM 😲 GAM 😨
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/MW_LLMAE.png")
+```
+
+---
+# Spatial vs Spatiotemporal setting
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../assets/img/Diff-MAE-pres.png")
+```
+
+---
+# Discussions
+
+- No single best model, performance varies from setting to setting and country to country
+
+- SPDE is consistent, but doesn't gain much from incorporating past data
+  - Can deteriorate when past and present spatial dependency are very different
+  
+- GAM is good, fast and simple-to-use alternative, especially with more data
+  - Dismal performance in irregularly shaped countries
+  - High perimeter to root area ratio: Malawi 8.7, Uganda 5.7
+
+- GBM unpredictable but generally fits well with more data available
+
+- 🏠💬 Fit multiple model or at least benchmark with GAM
+
+---
+class: inverse, center, middle
+
+# Guiding placement of health facilities using malaria criteria and interactive tool
+
+---
+# Access to healthcare and malaria transmission
+
+```{r echo=FALSE, out.width = "60%", fig.align='center'}
+knitr::include_graphics("../assets/img/chp2-remote-schema1.png")
+```
+
+---
+# Access to healthcare and malaria transmission
+
+```{r echo=FALSE, out.width = "60%", fig.align='center'}
+knitr::include_graphics("../assets/img/chp2-remote-schema2.png")
+```
+
+---
+# Distance / Travel time to health facilities
+
+- Early diagnosis and treatment reduce death and transmission
+
+- Many factors contribute to access to healthcare
+
+- Distance or travel time to health facilities is important predictor to malaria prevalence *(e.g. Schoeps et al. 2011, Kizito et al. 2012)*
+
+---
+# Bunkpurugu-Yunyoo District, Ghana
+
+.pull-left1[
+- 1200 km $^2$ , 150K populations
+
+- 2 urban centers, 8 health facilities
+
+- Multiple years of malaria surveys in 2010 - 2014
+
+- Important predictors *(Amratia et al. 2019; Millar et al. 2018)*
+  - Distance to health facilities (HF)
+  - Distance to urban centers
+]
+
+.pull-right1[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/byd-simplemap.png")
+```
+]
+
+---
+# Expansion of health services?
+
+- Community-based Health Planning and Services (CHPS)
+
+  - Run by trained community health officers (CHOs)
+  
+  - Assigned to community health post, services at doorstep
+  
+  - Treatment for malaria, acute respiratory diseases and other childhood illness
+  
+- Expand CHPS to all communities
+
+---
+# Prevalence vs Incidence
+
+- Available Data: Prevalence under 5 years old
+
+- Decision criteria: Incidence (of all ages)
+
+- Conversion from prevalence under five to incidence of all ages
+  - Prevalence → Incidence not always linear, especially for older children and adults
+
+---
+# Objectives
+
+- Determine the optimal locations for new health facilities based on district-wide malaria criteria:
+
+  1. Overall malaria prevalence of children under 5, 
+  
+  2. Overall malaria incidence of all ages, and 
+  
+  3. Average travel time to nearest health facilities
+  
+- Two scenarios:
+
+  1. Adding new health facilities to the set of existing health facilities
+  
+  2. Adding new health facilities in the absence of existing CHPS
+  
+---
+# Methods
+
+- Three years of high transmission season data (2010 to 2012)
+
+- ~ 5000 children under five
+
+- 71 to 80 villages per year
+
+- GAM with 5 predictors
+  - Travel time to HF, distance to urban center, elevation, NDVI, log population density
+  
+- Use Genetic Algorithm to find optimal locations given number of health facilities and criteria
+
+<!-- --- -->
+<!-- # Optimization -->
+
+<!-- - Procedures: -->
+<!--   - Add new facilit(ies) onto the map -->
+<!--   - Recalculate travel time to nearest health facilities -->
+<!--   - Use model to predict new sets of covariates -->
+<!--   - Calculate district-wide metrics -->
+
+<!-- - Specify number of health facilities and criteria -->
+
+<!-- - Start in some random initial locations -->
+
+<!-- - Use genetic algorithm to find locations that minimize metric -->
+
+<!-- - Find one up to five optimal locations for each criteria -->
+
+---
+# Results
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/Inference.PNG")
+```
+
+---
+# Results
+
+- See interactive visualizer and simulator created.
+  - http://bit.ly/ben-hf-app
+  
+### Pitch...
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/valle-conbio-grab.PNG")
+```
+
+---
+# Limitations
+
+- Correlation $\ne$ causation
+
+- Assume correlations and disease transmission dynamic remain unchanged 
+
+- Prevalence → Incidence based on model ensemble analysis of 30 sites in Sub-Saharan Africa from 1981 to 2011
+  - Best estimate of incidence we can get
+
+---
+# Take home messages
+
+- Different optimization criteria can produce very different results.
+
+- Importance of using multiple optimization criteria in decision analysis.
+
+- Decision analysis and interactive application are important tools for communicating models.
+
+---
+class: inverse, center, middle
+
+# Decision Support Tool to Predict Causes of Childhood Febrile Illness Using a Bayesian Model Approach
+
+---
+# Childhood Acute Febrile Illness (AFI)
+
+.pull-left2[
+- Malaria used to be the main cause of AFI in Africa
+
+- With decline in malaria transmission, other etiologies such as bacterial infection can be increasingly prominent
+
+- Difficulty in diagnosis, lack of test kit and prioritization of malaria can drive up misdiagnosis
+
+- Predicting infection status based on symptoms, demographic variables and hematological variables
+]
+
+.pull-right2[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/fever-clipart.png")
+```
+.source[*[kissclipart.com](https://www.kissclipart.com/cartoon-thermometer-clipart-thermometer-fever-clip-p9mkzm/)*]
+]
+
+---
+# Statistical decision support tool
+
+- Interactive tools that inform health practitioners using predicted probability (of infection)
+
+  - http://bit.ly/ben-afi-app
+
+--
+
+
+Ideal statistical decision support tool:
+- Accommodate missing data
+- User experience: Fast, small and flexible
+- Accurate
+- Informative and Interpretable
+
+---
+# Objectives
+
+- Create a modified Bayesian Model Averaging (BMA) model to simultaneously
+  - Impute missing variables
+  - Make predictions
+
+- Compare model predictive performance with other common approaches
+
+- Compare model performance with and without hematological variables as predictors
+
+---
+# Data
+
+- Collected in 2016/2017
+
+- 1500 children 1 to 15 years old
+
+```{r echo=FALSE, out.width = "60%", fig.align='center'}
+knitr::include_graphics("../assets/img/afi-study-design.png")
+```
+
+---
+# Data
+
+- Model diagnostic test outcomes using the recorded predictors
+
+.pull-left[
+Diagnostic Tests
+- Malaria 
+  - Rapid Diagnostic Test (RDT)
+  - Microscopy
+  - Taqman Array Card (TAC; Subsample)
+- Blood and Urine Culture if deemed necessary
+]
+
+.pull-right[
+Recorded Predictors
+  - Age
+  - Time of visit (season)
+  - Body temperature
+  - 30 clinical symptoms (Binary)
+  - 10 Hematological parameters
+  
+😨 Missing values in 
+  - 31/43 predictors (Most < 5%)
+  - 17% individuals
+]
+
+---
+# Model training
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("../assets/img/mvp-bma-training-schema.png")
+```
+
+---
+# Model prediction
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("../assets/img/mvp-bma-prediction-schema.png")
+```
+
+---
+# Performance vs other methods
+
+```{r echo=FALSE, out.width = "100%", fig.align='center'}
+knitr::include_graphics("../assets/img/afi-msev3.png")
+```
+
+---
+# Key findings
+
+- The modified BMA is as accurate as random forest without losing its interpretability
+  - Better than that of stepwise logistic regressions
+
+- Provides predictor importance for each diagnostic test
+
+- Can be incorporated into a relatively responsive interactive decision support tool
+
+---
+# Key findings
+
+- All models performed well in malaria RDT and microscopy
+
+  - Especially with hematological variables
+
+- Poor predictive performance with Malaria TAC
+  
+  - Low sample size
+  
+  - Submicroscopic infection is asymptomatic → Symptoms are not useful predictors
+
+- Poor predictive performance with Blood culture
+  
+  - Low sample size
+  
+  - Multiple types of pathogens – diverse signs and symptoms
+  
+  - Hematological variables provide no added value
+
+---
+# Conclusions
+
+- Interpretable, flexible and yet accurate model created with goal to be incorporated into an interactive web application
+
+- Need to test with more variety of dataset
+
+- Current model framework assumes predictors missing at random, and diagnostic test outcomes are independent
+
+---
+# References
+
+- Schoeps, Anja, et al. "The Effect of Distance to Health-Care Facilities on Childhood Mortality in Rural Burkina Faso", American Journal of Epidemiology 173, 5 (2011), pp. 492--498.
+- Kizito, James, et al. "Improving access to health care for malaria in Africa: a review of literature on what attracts patients", Malaria Journal 11, 1 (2012), pp. 55.
+- Weiss, D.J. et al. 2019. Mapping the global prevalence, incidence, and mortality of Plasmodium falciparum, 2000–17: a spatial and temporal modelling study. Lancet 394: 322–331.
+- Mandal, S. et al. Mathematical models of malaria - a review. Malar J 10, 202 (2011).
+- Millar, J. et al. 2018. Detecting local risk factors for residual malaria in northern Ghana using Bayesian model averaging. Malar. J. 17: 343.
+- Amratia, P. et al. 2019. Characterizing local-scale heterogeneity of malaria risk: A case study in Bunkpurugu-Yunyoo district in northern Ghana. Malar. J. 18: 1–14.
+
+---
+# Acknowledgement
+
+- Dr Denis Valle
+- Committee members: Dr Nikolay Bliznyuk, Dr Rhoel Dinglasan, Dr Tom Hladish
+- Collaborators: 
+  - Dr Gordon Awandare, Dr Justin Stoler, Dr Nicholas Amoako and WACCBIP; 
+  - Dr Benjamin Abuaku, Dr Paul Psychas, Noguchi Medical Research Institute and President's Malaria Initiative
+- Labmates
+- Family and friends
+
+---
+class: inverse, center, middle
+
+# Thank you very much! 
+Feedback, comments and questions? Email: kokbent [at] ufl.edu
