@@ -17,11 +17,19 @@ output:
 ---
 # Overview
 
+.pull-left2[
 - Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
 
 - Guiding placement of health facilities using malaria criteria and interactive tool
 
 - Decision Support Tool to Predict Causes of Childhood Febrile Illness Using a Bayesian Model Approach
+]
+
+.pull-right2[
+```{r echo=FALSE, fig.align='center', out.width="90%"}
+knitr::include_graphics("../assets/img/overview.png")
+```
+]
 
 ---
 class: inverse, center, middle
@@ -231,6 +239,9 @@ knitr::include_graphics("../assets/img/byd-simplemap.png")
 
 - Conversion from prevalence under five to incidence of all ages
   - Prevalence → Incidence not always linear, especially for older children and adults
+```{r echo=FALSE, fig.align='center', out.width="50%"}
+knitr::include_graphics("../assets/img/prev-incd.png")
+```
 
 ---
 # Objectives
@@ -431,7 +442,7 @@ knitr::include_graphics("../assets/img/afi-msev3.png")
 ---
 # Key findings
 
-- The modified BMA is as accurate as random forest without losing its interpretability
+- 👍 The modified BMA is as accurate as random forest without losing its interpretability
   - Better than that of stepwise logistic regressions
 
 - Provides predictor importance for each diagnostic test
@@ -467,6 +478,15 @@ knitr::include_graphics("../assets/img/afi-msev3.png")
 - Need to test with more variety of dataset
 
 - Current model framework assumes predictors missing at random, and diagnostic test outcomes are independent
+
+---
+# Final remarks
+
+- Contribution to data-driven decision making
+
+- Choosing and using the right models
+
+- Communicating findings and allowing users to interact with models via web applications
 
 ---
 # References

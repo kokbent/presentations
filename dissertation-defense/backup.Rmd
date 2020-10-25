@@ -1,0 +1,68 @@
+---
+title: "Predicting Malaria: Models and Their Applications"
+subtitle: "Backup Slides"
+author: "Kok Ben Toh"
+date: "2020/10/26"
+output:
+  xaringan::moon_reader:
+    css: ["default", "default-fonts", "snre-exit.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: ../analytics/simple_analytics.html
+      
+---
+# Additional Analysis for Part 1
+
+- [Supplemental A: Further investigations of GAM and SPDE-INLA performance](SI_A.pdf)
+
+- [Supplemental B: Significant predictors and malaria prevalence maps by model](SI_B.pdf)
+
+---
+# Part 2: Overall prevalence
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp3_BYD_trend.png")
+```
+
+---
+# Part 2: Prevalence vs Incidence
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp3_prev-incd-map.png")
+```
+
+---
+# Part 3: AFI Data Missingness
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp2_missingness.png")
+```
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp2_missingness_all.png")
+```
+
+---
+# Part 3: CV Schema
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp2_Schema.png")
+```
+
+---
+# Part 3: Inference results
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/chp2_Infer.png")
+```
+
+---
+# Part 3: AUC Comparisons
+
+```{r echo=FALSE, fig.align='center', out.width="50%"}
+knitr::include_graphics("../assets/img/chp2_AUCv3.png")
+```
