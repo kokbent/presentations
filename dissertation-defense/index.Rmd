@@ -1,6 +1,6 @@
 ---
 title: "Predicting Malaria: Models and Their Applications"
-subtitle: "Dissertation Defense<br/> (Slides available at: bit.ly/bentoh-exit)"
+subtitle: "Dissertation Defense<br/> (Slides available at: bit.ly/bentoh-defense)"
 author: "Kok Ben Toh"
 date: "2020/10/26"
 output:
@@ -295,7 +295,7 @@ knitr::include_graphics("../assets/img/prev-incd.png")
 # Results
 
 ```{r echo=FALSE, fig.align='center'}
-knitr::include_graphics("../assets/img/Inference.PNG")
+knitr::include_graphics("../assets/img/Inference.png")
 ```
 
 ---
