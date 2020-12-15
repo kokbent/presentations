@@ -1,0 +1,30 @@
+.pull-left1 {
+  float: left;
+  width: 37%;
+}
+.pull-right1 {
+  float: right;
+  width: 57%;
+}
+.pull-right1 ~ p {
+  clear: both;
+}
+
+.pull-left2 {
+  float: left;
+  width: 70%;
+}
+.pull-right2 {
+  float: right;
+  width: 25%;
+}
+.pull-right2 ~ p {
+  clear: both;
+}
+
+.source {
+  position: relative;
+  float: right;
+  bottom: 0em;
+  font-size: 75%;
+}

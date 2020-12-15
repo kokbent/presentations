@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Modeling Malaria and COVID-19: Models, Applications and Challenges</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ben Toh" />
+    <script src="libs/header-attrs-2.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="snre-exit.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Modeling Malaria and COVID-19: Models, Applications and Challenges
+## (Slides available at: bit.ly/bentoh-defense)
+### Ben Toh
+### 2020/12/16
+
+---
+
+class: inverse, center, middle
+
+# Self Introduction
+
+---
+
+&lt;img src="../assets/img/hidden_heavens.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="../assets/img/coral_restore.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# Overview
+
+### Part I Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
+
+&lt;img src="../assets/img/malaria-risk-bf-intro.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+### Part II Interactive visualizer and simulator for decision support
+
+.pull-left[
+&lt;img src="../assets/img/covid_dashboard.PNG" width="1457" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="../assets/img/covidsim.png" width="1321" style="display: block; margin: auto;" /&gt;
+]
+
+---
+### Part III Agent-based Model of COVID-19 Transmission in Florida
+
+&lt;img src="../assets/img/flcovid-RCHD.png" width="78%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# Part I Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
+
+---
+# Background summary
+
+.pull-right1[
+- Mapping of malaria prevalence based on national malaria survey data
+
+- Choices choices choices of models
+  - Common approach: SPDE-INLA
+  - Alternative: Generalized Additive Model (GAM)
+  - Alternative: Gradient Boosted Models/Trees (GBM)
+
+- More choices: To include the past dataset or not (Spatial vs Spatiotemporal settings)
+]
+
+.pull-left1[
+&lt;img src="../assets/img/spde-gamgbm-length.png" width="50%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Objectives
+
+- To determine if GAM and state-of-the-art machine learning method (e.g. GBM), under both spatial and spatio-temporal setting, can be good alternatives to the more complicated SPDE method
+
+- To determine if inclusion of past data is beneficial in modeling the current spatial distribution of malaria prevalence at the national scale
+
+---
+# Data
+
+- Demographic Health Survey data from five countries
+
+- Spatial covariates: free and publicly available remote sensing or GIS products
+
+.pull-left[
+&lt;img src="../assets/img/map-chp1-5cty.png" width="1365" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="../assets/img/chp1-covars-layer.png" width="1365" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Model comparison
+
+- 5 countries × 4 models × 2 settings
+- Spatial setting
+
+&lt;img src="../assets/img/chp1-schema-sp.png" width="2028" style="display: block; margin: auto;" /&gt;
+
+- Spatiotemporal setting
+
+&lt;img src="../assets/img/chp1-schema-st.png" width="2029" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Results
+
+- GAM and SPDE 👍
+
+&lt;img src="../assets/img/BF_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- GAM and SPDE 🙌
+
+&lt;img src="../assets/img/UG_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- Very small difference among top models (look at the axis)
+
+&lt;img src="../assets/img/NG_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- GBM 😲
+
+&lt;img src="../assets/img/ML_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Results
+
+- GBM 😲 GAM 😨
+
+&lt;img src="../assets/img/MW_LLMAE.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Spatial vs Spatiotemporal setting
+
+&lt;img src="../assets/img/Diff-MAE-pres.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Discussions
+
+.pull-left[
+- No single best model, performance varies from setting to setting and country to country
+
+- SPDE is consistent, but doesn't gain much from incorporating past data
+  - Can deteriorate when past and present spatial dependency are very different
+]
+
+.pull-right[
+&lt;img src="../assets/img/BF_pred_map.png" width="1575" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Discussions
+
+.pull-left[
+GAM is good, fast and simple-to-use alternative, especially with more data
+
+But ...
+]
+
+.pull-right[
+&lt;img src="../assets/img/MW_pred_map.png" width="1575" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Discussions
+
+&lt;img src="../assets/img/five_country.png" width="4800" style="display: block; margin: auto;" /&gt;
+
+- GAM: Dismal performance in irregularly shaped countries
+
+- High perimeter to root area ratio: Malawi 8.7, Uganda 5.7
+
+---
+# Discussions
+
+- GBM unpredictable but generally fits well with more data available
+
+- 🏠💬 Fit multiple model or at least benchmark with GAM
+
+---
+class: inverse, center, middle
+
+# Part II Interactive visualizer and simulator for decision support
+
+---
+# Interactive tools
+
+- Bridging the gap between modelers and stakeholders
+
+- Enhance understanding of the models by "using" them
+
+- Informed decisions
+
+- Increasingly easy to create: No longer requires in-depth knowledge in Javascript and CSS
+
+&lt;img src="../assets/img/valle-conbio-grab.PNG" width="1888" style="display: block; margin: auto;" /&gt;
+
+---
+# Placement of health facilities
+
+- Early diagnosis and treatment reduce death and transmission
+
+- Many factors contribute to access to healthcare
+
+- Distance or travel time to health facilities is important predictor to malaria prevalence *(e.g. Schoeps et al. 2011, Kizito et al. 2012)*
+
+---
+# Bunkpurugu-Yunyoo District, Ghana
+
+.pull-left1[
+- 1200 km `\(^2\)` , 150K populations
+
+- 2 urban centers, 8 health facilities
+
+- Multiple years of malaria surveys in 2010 - 2014
+
+- Important predictors *(Amratia et al. 2019; Millar et al. 2018)*
+  - Distance to health facilities (HF)
+  - Distance to urban centers
+]
+
+.pull-right1[
+&lt;img src="../assets/img/byd-simplemap.png" width="2519" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Prevalence vs Incidence
+
+- Available Data: Prevalence under 5 years old
+
+- Decision criteria: Incidence (of all ages)
+
+- Conversion from prevalence under five to incidence of all ages
+  - Prevalence → Incidence not always linear, especially for older children and adults
+  - Major limitation: meta-analysis does not always reflect the ground, but it is the best estimate we have
+
+---
+# Objectives
+
+Determine the optimal locations for new health facilities based on district-wide malaria criteria:
+
+  1. Overall malaria prevalence of children under 5, 
+  
+  2. Overall malaria incidence of all ages, and 
+  
+  3. Average travel time to nearest health facilities
+  
+---
+# Methods
+
+- Three years of high transmission season data (2010 to 2012)
+
+- ~ 5000 children under five
+
+- 71 to 80 villages per year
+
+- GAM with 5 predictors
+  - Travel time to HF, distance to urban center, elevation, NDVI, log population density
+
+- Use Genetic Algorithm to find optimal locations given number of health facilities and criteria
+
+---
+# Results
+
+See interactive visualizer and simulator created.
+- http://bit.ly/ben-hf-app
+
+---
+# Take home messages
+
+- Different optimization criteria can produce very different results.
+
+- Importance of using multiple optimization criteria in decision analysis.
+
+- Decision analysis and interactive application are important tools for communicating models.
+
+---
+# Other Applications
+
+&lt;!-- ## MSAT vs MDA --&gt;
+
+&lt;!-- ```{r echo=FALSE, out.width="100%", fig.align='center'} --&gt;
+&lt;!-- knitr::include_graphics("../assets/img/screen_shiny.PNG") --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- &lt;small&gt;Millar, J., Toh, K.B. &amp; Valle, D. To screen or not to screen: an interactive framework for comparing costs of mass malaria treatment interventions. BMC Med 18, 149 (2020).&lt;/small&gt; --&gt;
+
+&lt;!-- --- --&gt;
+
+### Predict Causes of Childhood Febrile Illness
+
+Symptoms, demographic and hematological variables as predictors. Bayesian Model Averaging approach. (http://bit.ly/ben-afi-app)
+
+&lt;img src="../assets/img/afi_shiny.PNG" width="2321" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- --- --&gt;
+&lt;!-- # Section remarks --&gt;
+
+&lt;!-- - Correlation `\(\ne\)` causation --&gt;
+
+&lt;!-- - Emphasis on "usability": e.g. small, fast, flexible --&gt;
+
+&lt;!-- - "Modeler-initiated" approach, does it work? --&gt;
+
+---
+class: inverse, center, middle
+
+# Part III Agent-based Model of COVID-19 Transmission in Florida
+
+---
+# Hladish Lab
+
+&lt;img src="../assets/img/hladishlab.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# COVID-19 Agent-based Model for Florida
+
+&lt;img src="../assets/img/abm_schema.png" width="1739" style="display: block; margin: auto;" /&gt;
+
+---
+# Use of ABM
+
+- Control and reopening strategy (MIDAS Multi-Model Outbreak Decision Support; submitted to *Science*)
+
+- Effects of vaccination (efficacy and coverage)
+
+- Spatial distribution and urban-rural divide of COVID-19
+
+---
+# Two Dynamics
+
+&lt;img src="../assets/img/flcovid-RCHD.png" width="78%" style="display: block; margin: auto;" /&gt;
+
+---
+# Two Dynamics
+
+&lt;img src="../assets/img/abc_schema2.png" width="1807" style="display: block; margin: auto;" /&gt;
+
+---
+# Reporting
+
+- Quantify relative improvement in case detection
+
+- Excess death, hospitalization-death dynamic varied over time
+
+&lt;img src="../assets/img/covid_preprint.PNG" width="1376" style="display: block; margin: auto;" /&gt;
+
+---
+# Personal Protective Behaviour (PPB)
+
+- Important part of COVID-19 transmission dynamic
+
+- Using a simple 0-1 score to describe behavioural changes
+
+- Intertwined with mobility, policy intervention, social distancing, hand washing, masking etc
+
+- Affects disease transmissibility and inter-household interaction network in the model
+
+- Time-varying, need to parameterize using proxy such as “mobility index”
+
+---
+# SafeGraph Mobility
+
+.pull-left1[
+- Provides estimates of foot traffic to “point of interests” down to census block group level
+
+- Social distancing metrics, e.g. proportion of time at home 🏠
+]
+
+.pull-right1[
+&lt;img src="../assets/img/SG_TAH_FL.png" width="1889" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Problem...
+
+&lt;img src="../assets/img/case_vs_sgnah.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+- No clear change in behaviour during second wave
+
+- How did second wave go down without PPB change?
+
+- Herd immunity?
+
+---
+# Search for other PPB proxy
+
+- Cuebiq contact index
+
+&lt;img src="../assets/img/cuebiq_cci.png" width="1707" style="display: block; margin: auto;" /&gt;
+
+---
+# Search for other PPB proxy
+
+- Bars and restaurants “index”
+
+- Mask wearing behaviour: e.g. Imperial College YouGov Behaviour tracker
+
+- Composite index?
+
+---
+# Work in progress...
+
+- Disentangling the interaction between mobility and age, and incorporating them in the model
+
+&lt;img src="../assets/img/SG_TAH_Age.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# References
+
+- Schoeps, Anja, et al. "The Effect of Distance to Health-Care Facilities on Childhood Mortality in Rural Burkina Faso", American Journal of Epidemiology 173, 5 (2011), pp. 492--498.
+- Kizito, James, et al. "Improving access to health care for malaria in Africa: a review of literature on what attracts patients", Malaria Journal 11, 1 (2012), pp. 55.
+- Weiss, D.J. et al. 2019. Mapping the global prevalence, incidence, and mortality of Plasmodium falciparum, 2000–17: a spatial and temporal modelling study. Lancet 394: 322–331.
+- Mandal, S. et al. Mathematical models of malaria - a review. Malar J 10, 202 (2011).
+- Millar, J. et al. 2018. Detecting local risk factors for residual malaria in northern Ghana using Bayesian model averaging. Malar. J. 17: 343.
+- Amratia, P. et al. 2019. Characterizing local-scale heterogeneity of malaria risk: A case study in Bunkpurugu-Yunyoo district in northern Ghana. Malar. J. 18: 1–14.
+
+---
+class: inverse, center, middle
+
+# Thank you very much! 
+Feedback, comments and questions? Email: kokbent [at] ufl.edu
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

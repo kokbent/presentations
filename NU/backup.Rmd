@@ -1,0 +1,83 @@
+---
+title: "Modeling Malaria and COVID-19: Models, Applications and Challenges"
+subtitle: "Backup slides"
+author: "Ben Toh"
+date: "2020/12/16"
+output:
+  xaringan::moon_reader:
+    css: ["default", "default-fonts", "snre-exit.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: ../analytics/simple_analytics.html
+      
+---
+# Age Breakdown of Mobility
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/case_age.png")
+```
+
+---
+# Age Breakdown of Mobility
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/SG_TAH_Age.png")
+```
+
+---
+# Age Breakdown of Mobility
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/SG_DTShort_Age.png")
+```
+
+---
+# Age Breakdown of Mobility
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/SG_OOS_Age.png")
+```
+
+---
+# Synthetic Population
+.pull-left[
+- 20.6m people 
+
+- 8.9m households
+
+- 7.6k schools
+
+- 3.9k long-term-care facilities
+
+- 307 hospitals
+
+- 2.3m other workplaces
+]
+
+.pull-right[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/hhwp.png")
+```
+]
+
+---
+# Synthetic Population
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("../assets/img/abm_synthpop.png")
+```
+
+---
+# Prevalence vs Incidence
+
+- Available Data: Prevalence under 5 years old
+
+- Decision criteria: Incidence (of all ages)
+
+- Conversion from prevalence under five to incidence of all ages
+  - Prevalence → Incidence not always linear, especially for older children and adults
+  - Major limitation: meta-analysis does not always reflect the ground, but it is the best estimate we have
