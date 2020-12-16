@@ -1,6 +1,6 @@
 ---
 title: "Modeling Malaria and COVID-19: Models, Applications and Challenges"
-subtitle: "(Slides available at: bit.ly/bentoh-defense)"
+subtitle: "(Slides available at: bit.ly/bentoh-nu)"
 author: "Ben Toh"
 date: "2020/12/16"
 output:
@@ -42,6 +42,8 @@ knitr::include_graphics("../assets/img/malaria-risk-bf-intro.png")
 
 ---
 ### Part II Interactive visualizer and simulator for decision support
+
+Guiding placement of health facilities using malaria criteria and interactive tools
 
 .pull-left[
 ```{r echo=FALSE, fig.align='center'}
@@ -256,7 +258,7 @@ knitr::include_graphics("../assets/img/valle-conbio-grab.PNG")
 ---
 # Placement of health facilities
 
-- Early diagnosis and treatment reduce death and transmission
+- Early diagnosis and treatment of malaria reduce death and transmission
 
 - Many factors contribute to access to healthcare
 
@@ -488,4 +490,7 @@ knitr::include_graphics("../assets/img/SG_TAH_Age.png")
 class: inverse, center, middle
 
 # Thank you very much! 
-Feedback, comments and questions? Email: kokbent [at] ufl.edu
+Feedback, comments and questions? 
+- Email: kokbent [at] ufl.edu
+- Slides: https://bit.ly/bentoh-nu
+- Website https://bentoh.my
