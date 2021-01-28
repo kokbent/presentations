@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Modeling Malaria and COVID-19: Models, Applications and Challenges</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ben Toh" />
+    <script src="libs/header-attrs-2.5/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="snre-exit.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Modeling Malaria and COVID-19: Models, Applications and Challenges
+### Ben Toh
+### 2021/01/29
+
+---
+
+# PhD dissertation
+
+### Improving National Level Spatial Mapping of Malaria through Alternative Spatial and Spatio-temporal Models
+
+### Guiding placement of health facilities using malaria criteria and interactive tools
+
+### Decision Support Tool to Predict Causes of Childhood Febrile Illness Using a Bayesian Model Approach
+
+---
+# Overview
+
+### Part I: Guiding placement of health facilities using malaria criteria and interactive tools
+
+### Part II: Agent-based Model of COVID-19 Transmission in Florida
+
+---
+class: inverse, center, middle
+
+# Part I: Guiding placement of health facilities using malaria criteria and interactive tools
+
+---
+# Interactive tools
+
+- Bridging the gap between modelers and stakeholders
+
+- Enhance understanding of the models by "using" them
+
+- Informed decisions
+
+- Increasingly easy to create: No longer requires in-depth knowledge in Javascript and CSS
+
+
+
+---
+# Placement of health facilities
+
+- Early diagnosis and treatment of malaria reduce death and transmission
+
+- Many factors contribute to access to healthcare
+
+- Distance or travel time to health facilities is important predictor to malaria prevalence *(e.g. Schoeps et al. 2011, Kizito et al. 2012)*
+
+---
+# Bunkpurugu-Yunyoo District, Ghana
+
+.pull-left1[
+- 1200 km `\(^2\)` , 150K populations
+
+- 2 urban centers, 8 health facilities
+
+- Multiple years of malaria surveys in 2010 - 2014
+
+- Important predictors *(Amratia et al. 2019; Millar et al. 2018)*
+  - Distance to health facilities (HF)
+  - Distance to urban centers
+]
+
+.pull-right1[
+&lt;img src="../assets/img/byd-simplemap.png" width="2519" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Objectives
+
+Determine the optimal locations for new health facilities based on district-wide malaria criteria:
+
+  1. Overall malaria prevalence of children under 5, 
+  
+  2. Overall malaria incidence of all ages, and 
+  
+  3. Average travel time to nearest health facilities
+  
+---
+# Methods
+
+- Three years of high transmission season data (2010 to 2012)
+
+- ~ 5000 children under five
+
+- 71 to 80 villages per year
+
+- GAM with 5 predictors
+  - Travel time to HF, distance to urban center, elevation, NDVI, log population density
+
+- Use Genetic Algorithm to find optimal locations given number of health facilities and criteria
+
+---
+# Results
+
+See interactive visualizer and simulator created.
+- http://bit.ly/ben-hf-app
+
+---
+# Take home messages
+
+- Different optimization criteria can produce very different results.
+
+- Importance of using multiple optimization criteria in decision analysis.
+
+- Decision analysis and interactive application are important tools for communicating models.
+
+---
+class: inverse, center, middle
+
+# Part III Agent-based Model of COVID-19 Transmission in Florida
+
+---
+# Hladish Lab
+
+&lt;img src="../assets/img/hladishlab.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# COVID-19 Agent-based Model for Florida
+
+&lt;img src="../assets/img/abm_schema.png" width="1739" style="display: block; margin: auto;" /&gt;
+
+---
+# Synthetic population
+
+.pull-left[
+- 20.6m population
+
+- 8.9m households
+
+- 2.3m workplaces
+
+- Schools, long term care facilities, hospitals
+]
+
+.pull-right[
+&lt;img src="../assets/img/hhwp.png" width="3359" /&gt;
+]
+
+---
+# Synthetic population
+
+&lt;img src="../assets/img/abm_synthpop.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# Two Dynamics
+
+&lt;img src="../assets/img/abc_schema2.png" width="1807" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle
+
+Transmission dynamic ❓ + Observation process 😐 = Reported data 🙂
+
+---
+# Reported data
+
+&lt;img src="../assets/img/flcovid-RCHD.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# Observation dynamics
+
+&lt;img src="../assets/img/case_report_delay.png" width="2519" style="display: block; margin: auto;" /&gt;
+
+---
+# Observation dynamics
+
+&lt;img src="../assets/img/death_report_delay.png" width="2519" style="display: block; margin: auto;" /&gt;
+
+---
+# Observation dynamics
+
+&lt;img src="../assets/img/case_det_improvement.png" width="2519" style="display: block; margin: auto;" /&gt;
+
+---
+# Observation dynamics
+
+&lt;img src="../assets/img/covid_preprint.PNG" width="1081" style="display: block; margin: auto;" /&gt;
+
+---
+# Use of ABM
+
+- Effects of vaccination
+
+- Effects of more transmissible and pathogenic variants
+
+- Spatial distribution and urban-rural divide of COVID-19
+
+---
+# References
+
+- Schoeps, Anja, et al. "The Effect of Distance to Health-Care Facilities on Childhood Mortality in Rural Burkina Faso", American Journal of Epidemiology 173, 5 (2011), pp. 492--498.
+- Kizito, James, et al. "Improving access to health care for malaria in Africa: a review of literature on what attracts patients", Malaria Journal 11, 1 (2012), pp. 55.
+- Weiss, D.J. et al. 2019. Mapping the global prevalence, incidence, and mortality of Plasmodium falciparum, 2000–17: a spatial and temporal modelling study. Lancet 394: 322–331.
+- Millar, J. et al. 2018. Detecting local risk factors for residual malaria in northern Ghana using Bayesian model averaging. Malar. J. 17: 343.
+- Amratia, P. et al. 2019. Characterizing local-scale heterogeneity of malaria risk: A case study in Bunkpurugu-Yunyoo district in northern Ghana. Malar. J. 18: 1–14.
+
+---
+class: inverse, center, middle
+
+# Thank you very much! 
+Feedback, comments and questions? 
+- Email: kokbent [at] ufl.edu
+- Website https://bentoh.my
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
