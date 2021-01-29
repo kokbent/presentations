@@ -123,7 +123,7 @@ See interactive visualizer and simulator created.
 ---
 class: inverse, center, middle
 
-# Part III Agent-based Model of COVID-19 Transmission in Florida
+# Part II Agent-based Model of COVID-19 Transmission in Florida
 
 ---
 # Hladish Lab
@@ -203,13 +203,6 @@ knitr::include_graphics("../assets/img/death_report_delay.png")
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("../assets/img/case_det_improvement.png")
-```
-
----
-# Observation dynamics
-
-```{r echo=FALSE, fig.align='center'}
-knitr::include_graphics("../assets/img/covid_preprint.PNG")
 ```
 
 ---
