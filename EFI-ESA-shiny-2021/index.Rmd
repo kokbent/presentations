@@ -247,6 +247,14 @@ class: center, middle
 
 # Thank you! 🙏
 
+Questions, comments, suggestions?
+
+Email: bentoh at northwestern dot edu
+
+Twitter: @kokbent
+
+Website: [bentoh.my](bentoh.my)
+
 ---
 
 class: center, middle, inverse
