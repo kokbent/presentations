@@ -325,6 +325,9 @@ knitr::include_graphics("../assets/img/GoogleAppsScript.png")
 
 - High quality of shape files can take MUCH longer time to render in plots and/or leaflet. Consider "downgrading" it using, [for example](https://gis.stackexchange.com/questions/71094/reduce-the-resolution-of-a-shapefile-in-r-or-qgis-if-necessary), `gSimplify()` from `rgeos` package.
 
+
+- Shock proof your code: Use `dplyr::filter()` and `dplyr::select()` instead of `filter()` and `select()`.
+
 ---
 
 class: center, middle

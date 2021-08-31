@@ -10,7 +10,7 @@ r <- runif(10000)
 
 # First way
 ## Put all 10000 values through the function `convertPrevalence()`
-s1 <- convertPrevalence(r, age_min_in = rep(2, 10000),
+s1 <- convertPrevalence(r, age_min_in = rep(0, 10000),
                         age_max_in = rep(5, 10000))
 
 # Second way
@@ -20,7 +20,7 @@ s1 <- convertPrevalence(r, age_min_in = rep(2, 10000),
 ## Then use `quantile()` to match the values in r to the sequence
 ## of returned values
 pre_calc <- convertPrevalence(seq(0, 1, by = 0.001), 
-                              age_min_in = rep(2, 1001),
+                              age_min_in = rep(0, 1001),
                               age_max_in = rep(5, 1001))
 prev_conv <- quantile(pre_calc, r)
 

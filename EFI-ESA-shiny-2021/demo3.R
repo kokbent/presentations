@@ -56,7 +56,7 @@ file.remove("tmp.rds")
 dt <- as.data.table(df) # data.table has different "table" format
 microbenchmark(
   df1<-df[df$V1 < 0,], # Base
-  df1<-df %>% filter(V1 < 0), # dplyr
-  dt1<-as.data.table(df)[,V1 < 0], # data.table with conversion
-  dt1<-dt[,V1 < 0] # data.table without conversion
+  df1<-df %>% dplyr::filter(V1 < 0), # dplyr
+  dt1<-as.data.table(df)[V1 < 0,], # data.table with conversion
+  dt1<-dt[V1 < 0,] # data.table without conversion
 )
