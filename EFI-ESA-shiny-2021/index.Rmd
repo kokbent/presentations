@@ -21,18 +21,6 @@ class: center, middle
 
 ---
 
-# Overview
-
-- Travel time to health facilities and malaria
-
-- The need for speed, how do we improve?
-  - Efficient coding
-  - Pre-computing models and results
-  
-- Continual updating of models and results, for free?
-
----
-
 class: inverse, center, middle
 
 # Travel time to health facilities and malaria
@@ -244,6 +232,30 @@ Fit using `glmmTMB` package; `predict.glmmTMB()` takes extremely long time (~ 1 
 
 ---
 
+# Final random tips
+
+- `sf` is generally faster than `sp` but sometimes `sp` works better together with `raster`
+
+- High quality of shape files can take MUCH longer time to render in plots and/or leaflet. Consider "downgrading" it using, [for example](https://gis.stackexchange.com/questions/71094/reduce-the-resolution-of-a-shapefile-in-r-or-qgis-if-necessary), `gSimplify()` from `rgeos` package.
+
+
+- Shock proof your code: Use `dplyr::filter()` and `dplyr::select()` instead of `filter()` and `select()`.
+
+---
+
+class: center, middle
+
+# Thank you! 🙏
+
+---
+
+class: center, middle, inverse
+
+# Hidden stash 👀👀👀
+
+---
+
+
 class: inverse, center, middle
 
 # Continual updates of models and results
@@ -316,21 +328,4 @@ knitr::include_graphics("../assets/img/GoogleAppsScript.png")
 ```
 
 - Ask Google to schedule the script on daily/weekly basis (Also free!)
-
----
-
-# Final random tips
-
-- `sf` is generally faster than `sp` but sometimes `sp` works better together with `raster`
-
-- High quality of shape files can take MUCH longer time to render in plots and/or leaflet. Consider "downgrading" it using, [for example](https://gis.stackexchange.com/questions/71094/reduce-the-resolution-of-a-shapefile-in-r-or-qgis-if-necessary), `gSimplify()` from `rgeos` package.
-
-
-- Shock proof your code: Use `dplyr::filter()` and `dplyr::select()` instead of `filter()` and `select()`.
-
----
-
-class: center, middle
-
-# Thank you! 🙏
 
